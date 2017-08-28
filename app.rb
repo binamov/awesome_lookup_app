@@ -10,7 +10,7 @@ end
 get "/search" do
   project_id = "b-a-k-h"
   datastore = Google::Cloud::Datastore.new
-  query     = datastore.query("Product").order("name", :asc).limit(15).
+  query     = datastore.query("Product").order("name", :asc).limit(12).
               where("name", ">=", params[:term])
   products  = datastore.run query
 
@@ -27,7 +27,7 @@ get "/search" do
 end
 
 get '/_ah/health' do
-  erb :layout
+  status 200
 end
 
 #[END all]
