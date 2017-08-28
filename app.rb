@@ -27,7 +27,7 @@ get "/search" do
 end
 
 get '/_ah/health' do
-  status 200
+  erb :layout
 end
 
 #[END all]
