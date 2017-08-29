@@ -1,17 +1,17 @@
 #[START all]
-require "digest/sha2"
-require "sinatra"
-require "google/cloud/datastore"
+require 'digest/sha2'
+require 'sinatra'
+require 'google/cloud/datastore'
 
 get '/' do
   erb :lookup
 end
 
-get "/search" do
-  project_id = "b-a-k-h"
+get '/search' do
+  project_id = 'b-a-k-h'
   datastore = Google::Cloud::Datastore.new
-  query     = datastore.query("Product").order("name", :asc).limit(12).
-              where("name", ">=", params[:term])
+  query     = datastore.query('Product').order('name', :asc).limit(12).
+              where('name', '>=', params[:term])
   products  = datastore.run query
 
   names = Array.new
@@ -22,7 +22,7 @@ get "/search" do
 
   response.write names
 
-  content_type :json #"text/plain"
+  content_type :json
   status 200
 end
 
