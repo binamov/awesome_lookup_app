@@ -41,6 +41,7 @@ GEM
       google-protobuf (~> 3.1)
       googleauth (~> 0.5.1)
     jwt (1.5.6)
+    kgio (2.11.0)
     little-plugger (1.1.4)
     logging (2.2.2)
       little-plugger (~> 1.1)
@@ -54,6 +55,7 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    raindrops (0.19.0)
     rly (0.2.3)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
@@ -79,6 +81,9 @@ GEM
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
     tilt (2.0.8)
+    unicorn (5.3.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -88,6 +93,7 @@ DEPENDENCIES
   google-cloud-datastore
   rspec
   sinatra
+  unicorn
 
 BUNDLED WITH
-   1.13.4
+   1.15.1

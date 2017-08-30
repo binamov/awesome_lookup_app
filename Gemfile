@@ -22,3 +22,7 @@ gem "google-cloud-datastore"
 group :test do
   gem "rspec"
 end
+
+group :production do
+  gem 'unicorn'
+end
