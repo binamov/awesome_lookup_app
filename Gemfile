@@ -13,14 +13,14 @@
 # limitations under the License.
 
 # [START dependencies]
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "sinatra"
-gem "google-cloud-datastore"
+gem 'sinatra', '~>2.0'
+gem 'google-cloud-datastore', '~>1.1'
 # [END dependencies]
 
 group :test do
-  gem "rspec"
+  gem 'rspec'
 end
 
 group :production do
