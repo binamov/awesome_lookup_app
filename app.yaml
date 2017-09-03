@@ -15,5 +15,12 @@
 #[START all]
 runtime: ruby
 env: flex
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cool_down_period_sec: 120 # default value
+  cpu_utilization:
+    target_utilization: 0.85
 entrypoint: bundle exec ruby app.rb
+
 #[END all]
