@@ -21,7 +21,7 @@ get '/search' do
   names = []
 
   products.each do |product|
-    names << product['name'] #if product['name'] =~ /#{Regexp.escape params[:term]}(.*)/i
+    names << product['name'] if product['name'] =~ /#{Regexp.escape params[:term]}(.*)/i
   end
 
   response.write names
