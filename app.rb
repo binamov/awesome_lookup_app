@@ -15,7 +15,7 @@ get '/search' do
                        .order('name', :asc)
                        .distinct_on('name')
                        .limit(12)
-                       .where('name', '>=', params[:term])
+                       .where('name', '=', params[:term])
   products  = datastore.run query
 
   names = []
