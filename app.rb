@@ -10,7 +10,11 @@ end
 get '/search' do
   project_id = 'b-a-k-h'
   datastore = Google::Cloud::Datastore.new
-  query     = datastore.query('Product').order('name', :asc).limit(12)
+  query     = datastore.query('Product')
+                       .select('name')
+                       .order('name', :asc)
+                       .distinct_on('name')
+                       .limit(12)
                        .where('name', '>=', params[:term])
   products  = datastore.run query
 

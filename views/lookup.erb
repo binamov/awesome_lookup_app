@@ -1,28 +1,22 @@
 <h1 align="center">awesome lookup app</h1>
-<div align="center" class="ui-widget">
-  <label for="products">products: </label>
-  <input id="products" placeholder="start typing">
-</div>
- 
-<div align="center" class="ui-widget" style="margin-top:2em; font-family:Arial">
-  Selection:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-  <div><img src="https://storage.googleapis.com/bakh-bucket/150px-RainbowDashFilly.png" alt="rainbow dash"></div>
+<div id="remote" align="center">
+    <input class="typeahead" type="text" placeholder="start typing">
 </div>
 
 <script>
   $( function() {
-    function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).scrollTop( 0 );
-    }
- 
-    $( "#products" ).autocomplete({
-      source: "search",
-      minLength: 2,
-      select: function( event, ui ) {
-        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+    var bestProducts = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(','),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: {
+        url: 'search?term=%QUERY',
+        wildcard: '%QUERY'
       }
+    });
+    
+    $('#remote .typeahead').typeahead(null, {
+      name: 'best-pictures',
+      source: bestProducts
     });
   } );
 
