@@ -1,4 +1,4 @@
-#[START all]
+# [START all]
 require 'digest/sha2'
 require 'sinatra'
 require 'google/cloud/datastore'
@@ -10,11 +10,11 @@ end
 get '/search' do
   project_id = 'b-a-k-h'
   datastore = Google::Cloud::Datastore.new
-  query     = datastore.query('Product').order('name', :asc).limit(12).
-              where('name', '>=', params[:term])
+  query     = datastore.query('Product').order('name', :asc).limit(12)
+                       .where('name', '>=', params[:term])
   products  = datastore.run query
 
-  names = Array.new
+  names = []
 
   products.each do |product|
     names << product['name']
@@ -27,8 +27,9 @@ get '/search' do
 end
 
 get '/_ah/health' do
+  response.write 'sall good, man'
   status 200
 end
 
-#[END all]
+# [END all]
 __END__
