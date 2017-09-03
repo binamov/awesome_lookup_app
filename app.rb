@@ -21,7 +21,7 @@ get '/search' do
   names = []
 
   products.each do |product|
-    names << product['name'] if params[:term] =~ /product['name'](.*)/i
+    names << product['name'] if product['name'] =~ /params[:term](.*)/i
   end
 
   response.write names
