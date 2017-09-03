@@ -15,8 +15,8 @@
 # [START dependencies]
 source 'https://rubygems.org'
 
-gem 'sinatra', '~>2.0'
-gem 'google-cloud-datastore', '~>1.1'
+gem 'sinatra'
+gem 'google-cloud-datastore', '~> 1.1'
 # [END dependencies]
 
 group :test do
